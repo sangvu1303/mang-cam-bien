@@ -49,9 +49,9 @@
 
     git commit -m '....'
 
-    git remote add stack git@github.com:{yourAccount}/{yourProjectName}.git
+    git remote add mcb git@github.com:{yourAccount}/{yourProjectName}.git
 
-    git push stack master
+    git push mcb master
 
 ### Download
 
