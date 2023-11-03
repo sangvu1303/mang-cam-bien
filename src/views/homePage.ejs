@@ -1,0 +1,42 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>display</title>
+	</head>
+	<body>
+		mạng cảm biến
+		<div
+			class="temp"
+			id="temperature-display"></div>
+		<div
+			class="humi"
+			id="humidity-display"></div>
+		<div
+			class="light"
+			id="light-display"></div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			const socket = io();
+
+			socket.on('temperature', (data) => {
+				const temperature = document.getElementById(
+					'temperature-display',
+				);
+				temperature.innerText = `Temperature: ${data}`;
+			});
+
+			socket.on('humidity', (data) => {
+				const humidity = document.getElementById('humidity-display');
+				humidity.innerText = `Humidity: ${data}`;
+			});
+
+			socket.on('light', (data) => {
+				const light = document.getElementById('light-display');
+				light.innerText = `Light: ${data}`;
+			});
+		</script>
+	</body>
+</html>
