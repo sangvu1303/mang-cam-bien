@@ -1,4 +1,11 @@
+```json
+    "Author" : "Sáng Vũ",
+    "Project": "Mạng Cảm Biến - PTIT",
+    "Description" : "Dùng NodeJS và Sequelize tạo dashboard hiển thị số liệu & chart từ database"
+```
+
 ### Setup NodeJs Version from NVM
+
     Download : https://github.com/coreybutler/nvm-windows/releases
 
     nvm-windows runs in an Admin shell. You'll need to start powershell or Command Prompt as Administrator to use nvm-windows
