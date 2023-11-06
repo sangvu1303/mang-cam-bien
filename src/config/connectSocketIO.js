@@ -22,11 +22,13 @@ const socketIoControl = (io) => {
 		});
 
 		socket.on('get-chart-data', async () => {
-			try {
-				socket.emit('initChartData', await db.MCB.findAll());
+			try
+			{
+				const initialChartData = await db.MCB.findAll();
+				socket.emit('initChartData', initialChartData);
 
 				setInterval(async () => {
-					const updatedData = await fetchDataForChart();
+					const updatedData = await db.MCB.findAll();
 					socket.emit('updateChartData', updatedData);
 				}, 1000);
 			} catch (e) {
