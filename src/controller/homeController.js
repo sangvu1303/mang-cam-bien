@@ -1,6 +1,6 @@
 let getDataPage = async (req, res) => {
 	try {
-		return res.render('homePage.ejs', {});
+		return res.render('homePage', {});
 	} catch (e) {
 		console.log(e);
 	}

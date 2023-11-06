@@ -5,7 +5,7 @@ import viewEngine from './config/viewEngine';
 import initWebRoutes from './route/web';
 import connectDB from './config/connectDB';
 import http from 'http';
-import socketIoControl from './services/socket';
+import socketIoControl from './config/connectSocketIO';
 
 require('dotenv').config();
 

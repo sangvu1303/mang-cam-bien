@@ -11,9 +11,19 @@
 		<link
 			rel="stylesheet"
 			href="styles/style.scss" />
+
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<script src="http://localhost:6006/socket.io/socket.io.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/series-label.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+		<script src=""></script>
 	</head>
 	<body>
-		<div class="container mt-5">
+		<div class="container mt-3">
 			<h1 class="text-center mb-4">Sensor Dashboard</h1>
 			<div class="row">
 				<div class="col-lg-4">
@@ -26,9 +36,7 @@
 							<h2 class="card-title">Temperature</h2>
 							<p
 								class="card-text"
-								id="temperature-display">
-								Loading...
-							</p>
+								id="temperature-display"></p>
 						</div>
 					</div>
 				</div>
@@ -42,9 +50,7 @@
 							<h2 class="card-title">Humidity</h2>
 							<p
 								class="card-text"
-								id="humidity-display">
-								Loading...
-							</p>
+								id="humidity-display"></p>
 						</div>
 					</div>
 				</div>
@@ -58,63 +64,21 @@
 							<h2 class="card-title">Light</h2>
 							<p
 								class="card-text"
-								id="light-display">
-								Loading...
-							</p>
+								id="light-display"></p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<script src="/socket.io/socket.io.js"></script>
-		<script>
-			const socket = io();
+		<div class="container mt-5">
+			<figure class="chart">
+				<div id="myChart"></div>
+			</figure>
+		</div>
 
-			socket.on('temperature', (data) => {
-				const temperature = document.getElementById(
-					'temperature-display',
-				);
-				temperature.innerText = `${data} °C`;
-			});
+		<script src="scripts/import.js"></script>
 
-			socket.on('humidity', (data) => {
-				const humidity = document.getElementById('humidity-display');
-				humidity.innerText = `${data} %`;
-			});
-
-			socket.on('light', (data) => {
-				const light = document.getElementById('light-display');
-				light.innerText = `${data} lux`;
-			});
-
-			socket.on('warningSection', (data) => {
-				const temperatureCard =
-					document.querySelector('.temperature-card');
-				const humidityCard = document.querySelector('.humidity-card');
-				const lightCard = document.querySelector('.light-card');
-
-				if (data.temperature > 40 || data.temperature < 0) {
-					temperatureCard.classList.add('warning-mode-on');
-				} else {
-					temperatureCard.classList.remove('warning-mode-on');
-				}
-
-				if (data.humidity > 60 || data.humidity < 30) {
-					humidityCard.classList.add('warning-mode-on');
-				} else {
-					humidityCard.classList.remove('warning-mode-on');
-				}
-
-				if (data.light < 100 || data.light > 1000) {
-					lightCard.classList.add('warning-mode-on');
-				} else {
-					lightCard.classList.remove('warning-mode-on');
-				}
-			});
-		</script>
-
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</body>
