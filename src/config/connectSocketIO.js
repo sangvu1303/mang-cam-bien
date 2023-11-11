@@ -14,25 +14,35 @@ const socketIoControl = (io) => {
 					order: [['updatedAt', 'DESC']],
 				});
 				if (latestData) {
-					socket.emit('send-data', latestData);
+					let updatedData = latestData;
+					const intervalId = setInterval(async () => {
+						// Lấy dữ liệu cập nhật mới
+						updatedData = await db.MCB.findOne({
+							order: [['updatedAt', 'DESC']],
+						});
+
+						// Gửi dữ liệu cập nhật đến client
+						socket.emit('send-data', updatedData);
+					}, 1000);
+					socket.intervalIds = socket.intervalIds || [];
+					socket.intervalIds.push(intervalId);
 				}
 			} catch (e) {
 				console.log(e);
 			}
 		});
 
-		let continuousData = [];
 		socket.on('get-chart-data', async () => {
-			try
-			{
+			try {
 				const initialChartData = await db.MCB.findAll();
 				socket.emit('initChartData', initialChartData);
 
-				setInterval(async () => {
+				const intervalId = setInterval(async () => {
 					const updatedData = await db.MCB.findAll();
-					continuousData = updatedData; // Lưu dữ liệu thay đổi liên tục
-					socket.emit('updateChartData', continuousData);
+					socket.emit('updateChartData', updatedData);
 				}, 1000);
+				socket.intervalIds = socket.intervalIds || [];
+				socket.intervalIds.push(intervalId);
 			} catch (e) {
 				console.log(e);
 			}

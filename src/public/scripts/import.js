@@ -100,8 +100,34 @@ socket.on('updateChartData', (data) => {
 socket.on('send-data', function (data) {
 	$('#temperature-display').html(data.temperature + ' °C');
 	$('#humidity-display').html(data.humidity + ' %');
-	$('#light-display').html(data.light + ' Lux');
+	$( '#light-display' ).html( data.light + ' Lux' );
+	
+	var tempCard = document.querySelector( 'temperature-card' );
+	var humiCard = document.querySelector( 'humidity-card' );
+	var lightCard = document.querySelector( 'light-card' );
+
+	if (data.temperature > 40 || data.temperature < 0) {
+		tempCard.classList.add('warning-mode-on');
+	} else {
+		tempCard.classList.remove('warning-mode-on');
+	}
+
+	if (data.humidity > 60 || data.humidity < 30) {
+		humiCard.classList.add('warning-mode-on');
+	} else {
+		humiCard.classList.remove('warning-mode-on');
+	}
+
+	if (data.light < 100 || data.light > 1000) {
+		lightCard.classList.add('warning-mode-on');
+	} else {
+		lightCard.classList.remove('warning-mode-on');
+	}
 });
+
+setInterval(() => {
+	socket.emit('get-data');
+}, 1000);
 
 function updateChart(data) {
 	if (chart) {
