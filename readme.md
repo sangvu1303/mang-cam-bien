@@ -1,7 +1,9 @@
 ```json
-    "Author" : "Sáng Vũ",
-    "Project": "Mạng Cảm Biến - PTIT",
-    "Description" : "Dùng NodeJS và Sequelize tạo dashboard hiển thị số liệu & chart từ database"
+    "Author"      :    "Sáng Vũ",
+    "Project"     :    "Mạng Cảm Biến - PTIT",
+    "Description" :    "Dùng Esp8266 , NodeJS , Sequelize , Socket.io tạo dashboard hiển thị số liệu & chart từ database"
+    "Start"       :    "1/11/2023"
+    "Finish"      :    "11/11/2023"
 ```
 
 ### Setup NodeJs Version from NVM
