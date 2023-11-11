@@ -21,6 +21,7 @@ const socketIoControl = (io) => {
 			}
 		});
 
+		let continuousData = [];
 		socket.on('get-chart-data', async () => {
 			try
 			{
@@ -29,7 +30,8 @@ const socketIoControl = (io) => {
 
 				setInterval(async () => {
 					const updatedData = await db.MCB.findAll();
-					socket.emit('updateChartData', updatedData);
+					continuousData = updatedData; // Lưu dữ liệu thay đổi liên tục
+					socket.emit('updateChartData', continuousData);
 				}, 1000);
 			} catch (e) {
 				console.log(e);
