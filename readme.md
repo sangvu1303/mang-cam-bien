@@ -1,7 +1,9 @@
 ```json
-    "Author" : "Sáng Vũ",
-    "Project": "Mạng Cảm Biến - PTIT",
-    "Description" : "Dùng NodeJS và Sequelize tạo dashboard hiển thị số liệu & chart từ database"
+    "Author"      :    "Sáng Vũ",
+    "Project"     :    "Mạng Cảm Biến - PTIT",
+    "Description" :    "Dùng Esp8266 , NodeJS , Sequelize , Socket.io tạo dashboard hiển thị số liệu & chart từ database"
+    "Start"       :    "1/11/2023"
+    "Finish"      :    "11/11/2023"
 ```
 
 ### Setup NodeJs Version from NVM
@@ -65,3 +67,10 @@
     Koala : http://koala-app.com/   (css)
 
     Postman : https://www.postman.com/downloads/   (api)
+### Picture 
+
+![image](https://github.com/sangvu1303/mang-cam-bien/assets/103579421/f67c7858-9dd7-4d3c-adb6-c40a733264be)
+
+![image](https://github.com/sangvu1303/mang-cam-bien/assets/103579421/3a0cd742-3b53-4037-a085-a684d2600873)
+
+![image](https://github.com/sangvu1303/mang-cam-bien/assets/103579421/a513b567-be5e-4839-88ef-01de29a7798b)
