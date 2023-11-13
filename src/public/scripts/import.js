@@ -100,11 +100,11 @@ socket.on('updateChartData', (data) => {
 socket.on('send-data', function (data) {
 	$('#temperature-display').html(data.temperature + ' °C');
 	$('#humidity-display').html(data.humidity + ' %');
-	$( '#light-display' ).html( data.light + ' Lux' );
-	
-	var tempCard = document.querySelector( 'temperature-card' );
-	var humiCard = document.querySelector( 'humidity-card' );
-	var lightCard = document.querySelector( 'light-card' );
+	$('#light-display').html(data.light + ' Lux');
+
+	var tempCard = document.querySelector('.temperature-card');
+	var humiCard = document.querySelector('.humidity-card');
+	var lightCard = document.querySelector('.light-card');
 
 	if (data.temperature > 40 || data.temperature < 0) {
 		tempCard.classList.add('warning-mode-on');
@@ -134,6 +134,17 @@ function updateChart(data) {
 		chart.series[0].setData(data.map((entry) => entry.temperature));
 		chart.series[1].setData(data.map((entry) => entry.humidity));
 		chart.series[2].setData(data.map((entry) => entry.light));
-		chart.xAxis[0].setCategories(data.map((entry) => entry.updatedAt));
+		//chart.xAxis[ 0 ].setCategories( data.map( ( entry ) => entry.updatedAt ) );
+		chart.xAxis[0].setCategories(
+			data.map((entry) => {
+				const updatedAt = new Date(entry.updatedAt);
+				const hours = updatedAt.getHours();
+				const minutes = updatedAt.getMinutes();
+				const formattedTime = `${hours}:${
+					minutes < 10 ? '0' : ''
+				}${minutes}`;
+				return formattedTime;
+			}),
+		);
 	}
 }
