@@ -1,0 +1,47 @@
+src
+|
+|-----config
+|     |
+|     |-----config.json (config database sequelize development)
+|     |-----socket.json (config socket.io default)
+|     |-----connectDB.js  (connect to database mysql from sequelize)  
+|     |-----connectSocketIo.js (connect to socket.io SERVER)
+|     |-----viewEngine.js (setup file public , view)
+|	   
+|-----controller
+|     |
+|     |-----homeController.js (render page ejs)
+|     
+|-----migrations
+|     |
+|     |-----migration-create-data.js (create table mysql)
+|     
+|-----models
+|     |
+|     |-----index.js (init all models from sequelize to mysql)
+|     |-----mcb.js (init value table)
+|     
+|-----public
+|     |
+|     |-----images
+|     |-----scripts
+|     |     |
+|     |     |-----import.js (chart,change color & connect to socket.io CLIENT)
+|     |
+|     |-----styles 
+|           |
+|           |-----style.scss
+|          
+|-----route
+|     |
+|     |-----web.js (setup route from controller)
+|     
+|-----seeders
+|     |
+|     |-----seeder-demo.js (demo data)
+|     
+|-----views
+|     |
+|     |-----homePage.ejs (like HTML)
+|     
+|-----server.js (Manage all source code in src)
