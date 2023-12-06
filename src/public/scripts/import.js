@@ -106,7 +106,7 @@ socket.on('send-data', function (data) {
 	var humiCard = document.querySelector('.humidity-card');
 	var lightCard = document.querySelector('.light-card');
 
-	if (data.temperature > 40 || data.temperature < 0) {
+	if (data.temperature > 27 || data.temperature < 0) {
 		tempCard.classList.add('warning-mode-on');
 	} else {
 		tempCard.classList.remove('warning-mode-on');

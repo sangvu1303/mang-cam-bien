@@ -27,5 +27,13 @@
     "nodemon": "^3.0.1",
     "sequelize": "^6.33.0",
     "sequelize-cli": "^6.6.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sangvu1303/mang-cam-bien.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sangvu1303/mang-cam-bien/issues"
+  },
+  "homepage": "https://github.com/sangvu1303/mang-cam-bien#readme"
 }
